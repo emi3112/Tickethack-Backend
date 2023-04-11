@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 const Trip = require('../models/trips');
 
 /* GET users listing. */
-router.get('/searchTrips', function(req, res) {
+router.post('/searchTrips', function(req, res) {
   
   let { departure, arrival, date } = req.body
 
