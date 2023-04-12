@@ -24,10 +24,10 @@ router.post('/searchTrips', function(req, res) {
           for(let trip of data) {
               let newDate = moment(trip.date).format('DD/MM/YYYY')
               if(newDate === date) {
-                arr.push({departure : trip.departure, arrival: trip.arrival, date: moment(trip.date).format('HH:mm'), price: trip.price})
+                arr.push({departure : trip.departure, arrival: trip.arrival, date: moment(trip.date).format('HH:mm'), price: Number(trip.price)})
               }
             }
-            res.json({result: true, Trips: arr})
+            res.json({result: true, trips: arr})
           }
 
       })
