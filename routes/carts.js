@@ -43,4 +43,10 @@ router.delete('/deleteCart/:date', (req, res) => {
     })
 })
 
+router.get('/showCarts', (req, res) => {
+    Cart.find().then(data => {
+        res.json({result: true, carts: data})
+    })
+})
+
 module.exports = router;
