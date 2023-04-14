@@ -32,16 +32,12 @@ router.post('/newCart', (req, res) => {
 
 router.delete('/deleteCart/:date', (req, res) => {
     Cart.deleteOne({date: req.params.date}).then(data => {
-        console.log(data);
-        console.log('REQ.PARAMS.DATE ===> ', typeof(req.params.date));
-        console.log('DATA.DATE ===> ', typeof(data.date));
-        console.log('DATA.DELETEDCOUNT ===> ', data.deletedCount);
-
-
         if(data.deletedCount > 0){
-            res.json({result : true})
+            Cart.find().then(data => {
+                res.json({result : true, length: data.length})
+            })
         } else {
-            res.json({result: false})
+            res.json({result: false, err:'no city to delete'})
         }
     })
 })
