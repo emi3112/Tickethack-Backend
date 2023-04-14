@@ -32,14 +32,7 @@ router.post('/newCart', (req, res) => {
 
 router.delete('/deleteCart/:date', (req, res) => {
     Cart.deleteOne({date: req.params.date}).then(data => {
-        if (data.deletedCount > 0) {
-            // document successfully deleted
-            Cart.find().then(data => {
-                res.json({ result: true, carts : data });
-            });
-        } else {
-            res.json({ result: false, error: "Cart not delete" });
-        }
+        res.json({result: true})
     })
 })
 
